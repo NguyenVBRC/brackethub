@@ -1,5 +1,7 @@
 "use client"
 
+import Link                         from 'next/link';
+
 import {
     Button,
     Drawer,
@@ -11,28 +13,15 @@ import {
     useDisclosure
   }                                 from '@chakra-ui/react'
 import { HamburgerIcon }            from '@chakra-ui/icons';
+import NavOptions                   from './NavOptions';
 import styles                       from './NavigationBar.module.css';
-
-const navOptions = ['Leagues', 'Tournaments']
-
-const NavOption = ({options}) => {
-    return (
-        <div className={styles.navDrawerBody}>
-            {options.map(option => {
-                return (
-                    <Button key={option} style={{ marginBottom: "10px" }}>{option}</Button>
-                )
-            })}
-        </div>
-    )
-}
  
 export default function NavigationBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <div className={styles.navContainer}>
-        Bracket Hub
+        <Link href="/" variant={'ghost'} style={{ paddingLeft: 0}}>Bracket Hub</Link>
         <div>
             <HamburgerIcon onClick={onOpen} h={8} w={8}/>
             <Drawer
@@ -46,7 +35,7 @@ export default function NavigationBar() {
                     <DrawerHeader>Navigate to...</DrawerHeader>
 
                     <DrawerBody>
-                        <NavOption options={navOptions} />
+                        <NavOptions onClose={onClose}/>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
