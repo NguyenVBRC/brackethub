@@ -8,9 +8,11 @@ export default function NavOptions({ onClose }) {
 
     const options = () => {
         return navOptions.map(option => {
+            const optionLowerCase = option.toLowerCase();
+
             return (
-                <Button key={option} style={{ marginBottom: "10px" }} onClick={onClose}>
-                    <Link href="/tournaments">{option}</Link>
+                <Button key={optionLowerCase} style={{ marginBottom: "10px" }} onClick={onClose}>
+                    <Link href={`/${optionLowerCase}`}>{option}</Link>
                 </Button>
             )
         })
