@@ -1,3 +1,6 @@
+import NavigationBar from "@/components/NavigationBar";
+import { ChakraProvider } from "@chakra-ui/react";
+
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -20,9 +23,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <ChakraProvider>
+            <NavigationBar />
+            {children}
+          </ChakraProvider>
+        </body>
     </html>
   );
 }
