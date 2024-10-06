@@ -1,4 +1,5 @@
 import styles from './tournaments.module.css';
+import Link from 'next/link';
 
 export default function Page() {
     const data = {
@@ -22,14 +23,16 @@ export default function Page() {
     }
 
     const allTourneys = data.tournaments.map(tourney => {
+        const name = tourney.name.toLowerCase().replace(/ /g, '-');
+
         return (
-            <div key={tourney.name} className={styles.tourneyCard}>
+            <Link key={tourney.name} className={styles.tourneyCard} href={`/tournaments/${name}`}> 
                 <div className={styles.cardHeader}>
                     <h3>{tourney.name}</h3>
                     <p>{tourney.date}</p>
                 </div>
                 <p>{tourney.location}</p>
-            </div>
+            </Link>
         )
     })
 
